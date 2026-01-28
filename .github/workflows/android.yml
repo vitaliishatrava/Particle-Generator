@@ -35,6 +35,11 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
+      # ✅ Принять лицензии
+      - name: Accept Android SDK licenses
+        run: yes | sdkmanager --licenses
+
+      # ✅ Установить нужные пакеты, включая build-tools с aidl
       - name: Install Android packages
         run: |
           sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
