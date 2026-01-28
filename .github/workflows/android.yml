@@ -26,6 +26,14 @@ jobs:
             build-essential autoconf libtool pkg-config \
             zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake
 
+      # ✅ Android SDK + Build Tools (содержат AIDL)
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android packages
+        run: |
+          sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+
       - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
