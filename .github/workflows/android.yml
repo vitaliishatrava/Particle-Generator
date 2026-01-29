@@ -35,14 +35,18 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
 
-      # ✅ Принять лицензии
       - name: Accept Android SDK licenses
-        run: yes | sdkmanager --licenses
-
-      # ✅ Установить нужные пакеты, включая build-tools с aidl
-      - name: Install Android packages
+        env:
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
         run: |
-          sdkmanager "platform-tools" "platforms;android-33" "build-tools;33.0.2"
+          yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses
+
+      - name: Install Android packages
+        env:
+          ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
+        run: |
+          $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager \
+            "platform-tools" "platforms;android-33" "build-tools;33.0.2"
 
       - name: Install Python deps
         run: |
