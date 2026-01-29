@@ -10,6 +10,7 @@ version = 0.1
 requirements = python3,kivy,pyjnius
 
 # Android SDK / Build Tools
+android.sdk_path = /usr/local/lib/android/sdk
 android.sdk_version = 33
 android.build_tools_version = 33.0.2
 
